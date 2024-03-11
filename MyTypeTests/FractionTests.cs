@@ -16,12 +16,10 @@ namespace MyType.Tests
         {
             Fraction fraction1 = new Fraction(1, 2);
             Fraction fraction2 = new Fraction(1, 3);
-            Fraction expectedResult = new Fraction(5, 6); // 1/2 + 1/3 = 5/6
 
-            Fraction result = fraction1.Add(fraction2);
+            Fraction result = fraction1 + fraction2;
 
-            Assert.AreEqual(expectedResult.Numerator, result.Numerator);
-            Assert.AreEqual(expectedResult.Denominator, result.Denominator);
+            Assert.AreEqual("5/6", result.ToString()); // 1/3 + 1/2 = 5/6
         }
 
         [TestMethod()]
@@ -29,64 +27,55 @@ namespace MyType.Tests
         {
             Fraction fraction1 = new Fraction(1, 3);
             Fraction fraction2 = new Fraction(1, 3);
-            Fraction expectedResult = new Fraction(2, 3); // 1/3 + 1/3 = 2/3
 
-            Fraction result = fraction1.Add(fraction2);
+            Fraction result = fraction1 + fraction2;
 
-            Assert.AreEqual(expectedResult.Numerator, result.Numerator);
-            Assert.AreEqual(expectedResult.Denominator, result.Denominator);
+            Assert.AreEqual("2/3", result.ToString()); // 1/3 + 1/3 = 2/3
         }
 
         [TestMethod()]
         public void SubtractTestSameDenominators()
         {
-            Fraction fraction1 = new Fraction(3, 4);
+            Fraction fraction1 = new Fraction(3, 4); 
             Fraction fraction2 = new Fraction(1, 4);
-            Fraction expectedResult = new Fraction(2, 4);
 
-            Fraction result = fraction1.Subtract(fraction2); // 3/4 - 1/4 = 2/4
+            Fraction result = fraction1 - fraction2;
 
-            Assert.AreEqual(expectedResult.Numerator, result.Numerator);
-            Assert.AreEqual(expectedResult.Denominator, result.Denominator);
+            Assert.AreEqual("2/4", result.ToString()); // 3/4 - 1/4 = 2/4
         }
 
         [TestMethod()]
         public void SubtractTestDifferentDenominators()
         {
-            Fraction fraction1 = new Fraction(3, 4);
-            Fraction fraction2 = new Fraction(1, 3);
-            Fraction expectedResult = new Fraction(5, 12);
+        Fraction fraction1 = new Fraction(3, 4);
+        Fraction fraction2 = new Fraction(1, 3);
 
-            Fraction result = fraction1.Subtract(fraction2); // 3/4 - 1/3 = 5/12
+        Fraction result = fraction1 - fraction2;
 
-            Assert.AreEqual(expectedResult.Numerator, result.Numerator);
-            Assert.AreEqual(expectedResult.Denominator, result.Denominator);
+        Assert.AreEqual("5/12", result.ToString()); // 3/4 - 1/3 = 5/12
         }
 
         [TestMethod()]
         public void MultiplyTest()
         {
-            Fraction fraction1 = new Fraction(3, 4);
-            Fraction fraction2 = new Fraction(2, 5);
-            Fraction expectedResult = new Fraction(6, 20); // 3/4 * 2/5 = 6/20
 
-            Fraction result = fraction1.Multiply(fraction2);
+        Fraction fraction1 = new Fraction(3, 4);
+        Fraction fraction2 = new Fraction(2, 3); 
 
-            Assert.AreEqual(expectedResult.Numerator, result.Numerator);
-            Assert.AreEqual(expectedResult.Denominator, result.Denominator);
+        Fraction result = fraction1 * fraction2;
+
+        Assert.AreEqual("6/12", result.ToString()); // 3/4* 2/3 = 6/12
         }
 
         [TestMethod()]
         public void DivideTestWithoutZero()
         {
             Fraction fraction1 = new Fraction(3, 4);
-            Fraction fraction2 = new Fraction(2, 5);
-            Fraction expectedResult = new Fraction(15, 8); // 3/4 / 2/5 = 15/8
+            Fraction fraction2 = new Fraction(2, 3);
 
-            Fraction result = fraction1.Divide(fraction2);
+            Fraction result = fraction1 / fraction2;
 
-            Assert.AreEqual(expectedResult.Numerator, result.Numerator);
-            Assert.AreEqual(expectedResult.Denominator, result.Denominator);
+            Assert.AreEqual("9/8", result.ToString()); // 3/4 / 2/3 = 9/8
         }
 
         [TestMethod()]

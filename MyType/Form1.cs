@@ -63,20 +63,21 @@ namespace MyType
                 switch (operation)
                 {
                     case "+":
-                        result = fraction1.Add(fraction2);
+                        result = fraction1 + fraction2;
                         break;
                     case "-":
-                        result = fraction1.Subtract(fraction2);
+                        result = fraction1 - fraction2;
                         break;
                     case "*":
-                        result = fraction1.Multiply(fraction2);
+                        result = fraction1 * fraction2;
                         break;
                     case "/":
-                        result = fraction1.Divide(fraction2);
+                        result = fraction1 / fraction2;
                         break;
                     default:
                         throw new ArgumentException("Неправильная операция");
                 }
+
 
                 lblResult.Text = result.ToString();
             }
@@ -180,7 +181,7 @@ namespace MyType
 
                 Fraction fraction1 = new Fraction(num1, den1);
                 fraction1.Simplify();
-                Fraction fraction2 = new Fraction(num1, den1);
+                Fraction fraction2 = new Fraction(num2, den2);
                 fraction2.Simplify();
 
                 textBoxNum1.Text = fraction1.Numerator.ToString();

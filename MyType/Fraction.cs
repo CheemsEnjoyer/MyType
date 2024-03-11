@@ -46,83 +46,91 @@ namespace MyType
         //    return new Fraction(newNumerator, newDenominator);
         //}
 
-        public static Fraction operator +(Fraction other, Fraction other1)
+        public static Fraction operator +(Fraction fraction1, Fraction fraction2)
         {
             int newNumerator;
             int newDenominator;
 
-            int denominator = other.Denominator;
-            if (other.Denominator == denominator)
+            if (fraction1.Denominator == fraction2.Denominator)
             {
-                newNumerator = other.Numerator + other1.Numerator;
-                newDenominator = other.Denominator;
+                newNumerator = fraction1.Numerator + fraction2.Numerator;
+                newDenominator = fraction1.Denominator;
             }
             else
             {
-                newNumerator = other.Numerator * denominator + other1.Numerator * other1.Denominator;
-                newDenominator = other1.Denominator * denominator;
+                newNumerator = fraction1.Numerator * fraction2.Denominator + fraction2.Numerator * fraction1.Denominator;
+                newDenominator = fraction1.Denominator * fraction2.Denominator;
             }
 
             return new Fraction(newNumerator, newDenominator);
         }
+
 
 
         // Вычитание
-        public Fraction Subtract(Fraction other)
+        //public Fraction Subtract(Fraction other)
+        //{
+        //    int newNumerator;
+        //    int newDenominator;
+
+        //    if (Denominator == other.Denominator)
+        //    {
+        //        newNumerator = Numerator - other.Numerator;
+        //        newDenominator = Denominator;
+        //    }
+        //    else
+        //    {
+        //        newNumerator = Numerator * other.Denominator - other.Numerator * Denominator;
+        //        newDenominator = Denominator * other.Denominator;
+        //    }
+
+        //    return new Fraction(newNumerator, newDenominator);
+        //}
+
+        public static Fraction operator -(Fraction fraction1, Fraction fraction2)
         {
             int newNumerator;
             int newDenominator;
 
-            if (Denominator == other.Denominator)
+            if (fraction1.Denominator == fraction2.Denominator)
             {
-                newNumerator = Numerator - other.Numerator;
-                newDenominator = Denominator;
+                newNumerator = fraction1.Numerator - fraction2.Numerator;
+                newDenominator = fraction1.Denominator;
             }
             else
             {
-                newNumerator = Numerator * other.Denominator - other.Numerator * Denominator;
-                newDenominator = Denominator * other.Denominator;
+                newNumerator = fraction1.Numerator * fraction2.Denominator - fraction2.Numerator * fraction1.Denominator;
+                newDenominator = fraction1.Denominator * fraction2.Denominator;
             }
 
             return new Fraction(newNumerator, newDenominator);
         }
 
-        public static Fraction operator -(Fraction other, Fraction other1)
-        {
-            int newNumerator;
-            int newDenominator;
-
-            if (other1.Denominator == other.Denominator)
-            {
-                newNumerator = other1.Numerator - other.Numerator;
-                newDenominator = other.Denominator;
-            }
-            else
-            {
-                newNumerator = Numerator * other.Denominator - other.Numerator * Denominator;
-                newDenominator = Denominator * other.Denominator;
-            }
-
-            return new Fraction(newNumerator, newDenominator);
-        }
         // Умножение
-        public Fraction Multiply(Fraction other)
+        public static Fraction operator *(Fraction fraction1, Fraction fraction2)
         {
-            int newNumerator = Numerator * other.Numerator;
-            int newDenominator = Denominator * other.Denominator;
+            int newNumerator = fraction1.Numerator * fraction2.Numerator;
+            int newDenominator = fraction1.Denominator * fraction2.Denominator;
+
             return new Fraction(newNumerator, newDenominator);
         }
+
 
         // Деление
-        public Fraction Divide(Fraction other)
+        public static Fraction operator /(Fraction fraction1, Fraction fraction2)
         {
-            if (other.Numerator == 0)
-                throw new ArgumentException("Нельзя разделить на 0");
+            // Проверка на деление на ноль
+            if (fraction2.Numerator == 0)
+            {
+                throw new ArgumentException("Деление на ноль невозможно");
+            }
 
-            int newNumerator = Numerator * other.Denominator;
-            int newDenominator = Denominator * other.Numerator;
+            int newNumerator = fraction1.Numerator * fraction2.Denominator;
+            int newDenominator = fraction1.Denominator * fraction2.Numerator;
+
             return new Fraction(newNumerator, newDenominator);
         }
+
 
         // Сокращение дроби
         public void Simplify()
